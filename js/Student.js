@@ -2,11 +2,11 @@
 
 class Student extends User {
   /**
-   * 
-   * @param {string} name 
-   * @param {string} surname 
-   * @param {string} gender 
-   * @param {string} yearOfAdmission 
+   *
+   * @param {string} name
+   * @param {string} surname
+   * @param {string} gender
+   * @param {string} yearOfAdmission
    */
   constructor(name, surname, gender, yearOfAdmission) {
     super(name, surname, gender);
@@ -32,23 +32,23 @@ class Student extends User {
   }
 
   getYearsOfStudy() {
-    // const years = new Date().getFullYear() - new Date(this._yearOfAdmission).getFullYear();
-    //  return (years === 0) ? 1 : years + 1;
-
-    return new Date().getFullYear() -
-      new Date(this._yearOfAdmission).getFullYear() ===
-      0
-      ? 1
-      : new Date().getFullYear() -
-          new Date(this._yearOfAdmission).getFullYear() +
-          1;
+    const years = new Date().getFullYear() - new Date(this._yearOfAdmission).getFullYear();
+    if( years > 6){
+      return ` ${years} years of education!!! You are not a student!`
+    }
+     return (years === 0) ? 1 : years + 1;
   }
 }
 
 try {
-  const student = new Student("Koko", "Shanel", "female", "01.09.2019");
-  console.log(student);
-  console.log(student.getYearsOfStudy());
+  const student1 = new Student("Koko", "Shanel", "female", "01.09.2019");
+  const student2 = new Student('Tim', 'Henks', 'male', "01.09.2009")
+  const student3 = new Student('Tom', 'Hardy', 'male', "01.09.2018")
+  console.log(student1);
+  console.log(student1.getYearsOfStudy());
+  console.log(student2);
+  console.log(student2.getYearsOfStudy());
+  console.log(student3.getYearsOfStudy());
 } catch (error) {
   console.log(error);
 }
